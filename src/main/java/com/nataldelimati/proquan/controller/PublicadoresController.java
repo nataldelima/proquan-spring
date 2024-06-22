@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,31 @@ public class PublicadoresController {
     @PostMapping
     public Publicadores createPublicadores(@RequestBody Publicadores publicadores) {
         return publicadoresService.save(publicadores);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Publicadores> updatePublicadores(@PathVariable Long id,
+            @RequestBody Publicadores publicadoresDetalhes) {
+        return publicadoresService.findById(id)
+                .map(publicadores -> {
+                    publicadores.setPrimeiroNome(publicadoresDetalhes.getPrimeiroNome());
+                    publicadores.setNomeMeio(publicadoresDetalhes.getNomeMeio());
+                    publicadores.setSobrenome(publicadoresDetalhes.getSobrenome());
+                    publicadores.setDataNascimento(publicadoresDetalhes.getDataNascimento());
+                    publicadores.setDataBatismo(publicadoresDetalhes.getDataBatismo());
+                    publicadores.setSexo(publicadoresDetalhes.getSexo());
+                    publicadores.setPrivilegios(publicadoresDetalhes.getPrivilegios());
+                    publicadores.setGrupoCampo(publicadoresDetalhes.getGrupoCampo());
+                    publicadores.setEndereco(publicadoresDetalhes.getEndereco());
+                    publicadores.setTelefone(publicadoresDetalhes.getTelefone());
+                    publicadores.setContatoEmergencia(publicadoresDetalhes.getContatoEmergencia());
+                    publicadores.setTelContatoEmergencia(publicadoresDetalhes.getTelContatoEmergencia());
+                    publicadores.setContatoEmergenciaEhTj(publicadoresDetalhes.isContatoEmergenciaEhTj());
+                    publicadores.setAtivo(publicadoresDetalhes.isAtivo());
+                    Publicadores updatedPublicadores = publicadoresService.save(publicadores);
+                    return ResponseEntity.ok().body(updatedPublicadores);
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
