@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista de Congregações</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Lista de Congregações</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Primeiro Nome</th>
+                    <th>Nome do Meio</th>
+                    <th>Sobrenome</th>
+                    <th>Data de Nascimento</th>
+                    <th>Data de Batismo</th>
+                    <th>Sexo</th>
+                    <th>Privilégios</th>
+                    <th>Grupo de Campo</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                    <th>Contato de Emergência</th>
+                    <th>Tel. Contato Emergência</th>
+                    <th>Contato Emerg. é TJ</th>
+                    <th>Ativo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="congregacao : ${congregacoes}">
+                    <td th:text="${congregacao.primeiroNome}">Primeiro Nome</td>
+                    <td th:text="${congregacao.nomeMeio}">Nome do Meio</td>
+                    <td th:text="${congregacao.sobrenome}">Sobrenome</td>
+                    <td th:text="${congregacao.dataNascimento}">Data de Nascimento</td>
+                    <td th:text="${congregacao.dataBatismo}">Data de Batismo</td>
+                    <td th:text="${congregacao.sexo}">Sexo</td>
+                    <td th:text="${congregacao.privilegios}">Privilégios</td>
+                    <td th:text="${congregacao.grupoCampo}">Grupo de Campo</td>
+                    <td th:text="${congregacao.endereco}">Endereço</td>
+                    <td th:text="${congregacao.telefone}">Telefone</td>
+                    <td th:text="${congregacao.contatoEmergencia}">Contato de Emergência</td>
+                    <td th:text="${congregacao.telContatoEmergencia}">Tel. Contato Emergência</td>
+                    <td th:text="${congregacao.contatoEmergenciaEhTj}">Contato Emerg. é TJ</td>
+                    <td th:text="${congregacao.ativo}">Ativo</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/congregacoes/cadastro" class="btn btn-primary">Adicionar Nova Congregação</a>
+    </div>
+</body>
+
+</html>
