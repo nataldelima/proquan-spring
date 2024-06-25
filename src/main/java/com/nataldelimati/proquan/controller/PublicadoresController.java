@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nataldelimati.proquan.entity.Publicadores;
 import com.nataldelimati.proquan.service.PublicadoresService;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/publicadores")
 public class PublicadoresController {
     @Autowired

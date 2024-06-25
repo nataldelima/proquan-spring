@@ -4,75 +4,57 @@
 <head>
     <title>Cadastro de Congregação</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
 </head>
 
 <body>
     <div class="container">
-        <h2>Cadastro de Congregação</h2>
-        <form th:action="@{/congregacoes/add}" th:object="${congregacao}" method="post">
-            <div class="form-group">
-                <label for="primeiroNome">Primeiro Nome:</label>
-                <input type="text" class="form-control" id="primeiroNome" th:field="*{primeiroNome}"
-                    placeholder="Primeiro Nome">
-            </div>
-            <div class="form-group">
-                <label for="nomeMeio">Nome do Meio:</label>
-                <input type="text" class="form-control" id="nomeMeio" th:field="*{nomeMeio}" placeholder="Nome do Meio">
-            </div>
-            <div class="form-group">
-                <label for="sobrenome">Sobrenome:</label>
-                <input type="text" class="form-control" id="sobrenome" th:field="*{sobrenome}" placeholder="Sobrenome">
-            </div>
-            <div class="form-group">
-                <label for="dataNascimento">Data de Nascimento:</label>
-                <input type="date" class="form-control" id="dataNascimento" th:field="*{dataNascimento}">
-            </div>
-            <div class="form-group">
-                <label for="dataBatismo">Data de Batismo:</label>
-                <input type="date" class="form-control" id="dataBatismo" th:field="*{dataBatismo}">
-            </div>
-            <div class="form-group">
-                <label for="sexo">Sexo:</label>
-                <input type="text" class="form-control" id="sexo" th:field="*{sexo}" placeholder="Sexo">
-            </div>
-            <div class="form-group">
-                <label for="privilegios">Privilégios:</label>
-                <input type="text" class="form-control" id="privilegios" th:field="*{privilegios}"
-                    placeholder="Privilégios (JSON)">
-            </div>
-            <div class="form-group">
-                <label for="grupoCampo">Grupo de Campo:</label>
-                <input type="text" class="form-control" id="grupoCampo" th:field="*{grupoCampo}"
-                    placeholder="Grupo de Campo">
-            </div>
-            <div class="form-group">
-                <label for="endereco">Endereço:</label>
-                <input type="text" class="form-control" id="endereco" th:field="*{endereco}" placeholder="Endereço">
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone:</label>
-                <input type="text" class="form-control" id="telefone" th:field="*{telefone}" placeholder="Telefone">
-            </div>
-            <div class="form-group">
-                <label for="contatoEmergencia">Contato de Emergência:</label>
-                <input type="text" class="form-control" id="contatoEmergencia" th:field="*{contatoEmergencia}"
-                    placeholder="Contato de Emergência">
-            </div>
-            <div class="form-group">
-                <label for="telContatoEmergencia">Telefone do Contato de Emergência:</label>
-                <input type="text" class="form-control" id="telContatoEmergencia" th:field="*{telContatoEmergencia}"
-                    placeholder="Telefone do Contato de Emergência">
-            </div>
-            <div class="form-group">
-                <label for="contatoEmergenciaEhTj">Contato de Emergência é TJ:</label>
-                <input type="checkbox" id="contatoEmergenciaEhTj" th:field="*{contatoEmergenciaEhTj}">
-            </div>
-            <div class="form-group">
-                <label for="ativo">Ativo:</label>
-                <input type="checkbox" id="ativo" th:field="*{ativo}">
-            </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-        </form>
+        <div class="row is-center">
+            <h2>Cadastro de Congregação</h2>
+            <form th:action="@{/congregacao/add}" th:object="${congregacao}" method="post">
+
+                <div class="row">
+                    <div class="form-group col-3">
+                        <label for="nro">Número:</label>
+                        <input type="number" class="form-control" id="nro" th:field="*{nro}"
+                            placeholder="Número da congregação">
+                    </div>
+                    <div class="form-group col-9">
+                        <label for="nome">Nome da Congregação:</label>
+                        <input type="text" class="form-control" id="nome" th:field="*{nome}"
+                            placeholder="Nome da congregação">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        <label for="endereco">Endereço:</label>
+                        <textarea name="endereco" id="endereco" class="form-control" th:field="*{endereco}"
+                            placeholder="Endereço completo da congregação"></textarea>
+                    </div>
+                </div>
+                <div class="row is-botom">
+                    <div class="form-group col-3">
+                        <label for="circuito">Circuito:</label>
+                        <input type="text" class="form-control" id="circuito" th:field="*{circuito}"
+                            placeholder="Circuito da congregação">
+                    </div>
+                    <div class="form-group col-5">
+                        <label for="supteCircuito">Superintendente de Circuito:</label>
+                        <input type="text" class="form-control" id="supteCircuito" th:field="*{supteCircuito}"
+                            placeholder="Nome do superintendente de Circuito">
+                    </div>
+
+
+                    <div class="form-group col-4">
+                        <label for="telSupteCircuito">Tel. do Supte de Circuito:</label>
+                        <input type="text" class="form-control" id="telSupteCircuito" th:field="*{telSupteCircuito}"
+                            placeholder="telSupteCircuito" aria-placeholder="Telefone do Superintendente de Circuito">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+
+            </form>
+        </div>
     </div>
 </body>
 

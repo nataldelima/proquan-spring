@@ -4,6 +4,7 @@
 <head>
     <title>Lista de Congregações</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
 </head>
 
 <body>
@@ -12,42 +13,38 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Primeiro Nome</th>
-                    <th>Nome do Meio</th>
-                    <th>Sobrenome</th>
-                    <th>Data de Nascimento</th>
-                    <th>Data de Batismo</th>
-                    <th>Sexo</th>
-                    <th>Privilégios</th>
-                    <th>Grupo de Campo</th>
+                    <th>Número </th>
+                    <th>Nome </th>
                     <th>Endereço</th>
-                    <th>Telefone</th>
-                    <th>Contato de Emergência</th>
-                    <th>Tel. Contato Emergência</th>
-                    <th>Contato Emerg. é TJ</th>
-                    <th>Ativo</th>
+                    <th>Circuito</th>
+                    <th>Superintendente de Circuito</th>
+                    <th>Telefone do Supte de Circuito</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="congregacao : ${congregacoes}">
-                    <td th:text="${congregacao.primeiroNome}">Primeiro Nome</td>
-                    <td th:text="${congregacao.nomeMeio}">Nome do Meio</td>
-                    <td th:text="${congregacao.sobrenome}">Sobrenome</td>
-                    <td th:text="${congregacao.dataNascimento}">Data de Nascimento</td>
-                    <td th:text="${congregacao.dataBatismo}">Data de Batismo</td>
-                    <td th:text="${congregacao.sexo}">Sexo</td>
-                    <td th:text="${congregacao.privilegios}">Privilégios</td>
-                    <td th:text="${congregacao.grupoCampo}">Grupo de Campo</td>
+                <tr th:each=" congregacao : ${congregacao}">
+                    <td th:text="${congregacao.nro}">Número</td>
+                    <td th:text="${congregacao.nome}">Nome</td>
                     <td th:text="${congregacao.endereco}">Endereço</td>
-                    <td th:text="${congregacao.telefone}">Telefone</td>
-                    <td th:text="${congregacao.contatoEmergencia}">Contato de Emergência</td>
-                    <td th:text="${congregacao.telContatoEmergencia}">Tel. Contato Emergência</td>
-                    <td th:text="${congregacao.contatoEmergenciaEhTj}">Contato Emerg. é TJ</td>
-                    <td th:text="${congregacao.ativo}">Ativo</td>
+                    <td th:text="${congregacao.circuito}">Circuito</td>
+                    <td th:text="${congregacao.supteCircuito}">Supte de Circuito</td>
+                    <td th:text="${congregacao.telSupteCircuito}">Telefone do Supte e Circuito</td>
+                    <td>
+                        <a class="button success" th:href="@{/congregacoes/{id}(id=${congregacao.nro})}"
+                            th:onclick="'return confirm(\'Tem certeza que deseja deletar esta congregação?\');'">
+                            Alterar
+                        </a>
+                        <a class="button error" th:href="@{/congregacoes/{id}(id=${congregacao.nro})}"
+                            th:onclick="'return confirm(\'Tem certeza que deseja deletar esta congregação?\');'">
+                            Excluir
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <a href="/congregacoes/cadastro" class="btn btn-primary">Adicionar Nova Congregação</a>
+        <a href="/congregacao/cadastro" class="button primary">Adicionar Nova Congregação</a>
+
     </div>
 </body>
 
